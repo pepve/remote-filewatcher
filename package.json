@@ -1,0 +1,46 @@
+{
+  "name": "remote-filewatcher",
+  "version": "0.0.1",
+  "description": "Watch files over the network",
+  "main": "lib/client.js",
+  "bin": "lib/server.js",
+  "scripts": {
+    "pretest": "jshint lib",
+    "test": "node test/simple.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pepve/remote-filewatcher.git"
+  },
+  "keywords": [
+    "filewatcher",
+    "net",
+    "network",
+    "fs",
+    "file",
+    "watch"
+  ],
+  "author": "Pepijn Verlaan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pepve/remote-filewatcher/issues"
+  },
+  "dependencies": {
+    "filewatcher": "~1.1.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.5"
+  },
+  "jshintConfig": {
+    "node": true,
+    "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "latedef": "nofunc",
+    "newcap": true,
+    "noempty": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": true
+  }
+}
