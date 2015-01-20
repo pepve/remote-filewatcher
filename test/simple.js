@@ -6,10 +6,10 @@ var assert = require('assert'),
 var expectedFile = __dirname + '/foo';
 var actualFile;
 
-var server = child_process.spawn('node', [__dirname + '/../lib/server.js', '127.0.0.1', '12345'], { stdio: 'inherit' });
+var server = child_process.spawn('node', [__dirname + '/../lib/server.js', 'localhost', '12345'], { stdio: 'inherit' });
 
 setTimeout(function () {
-	var client = remoteFilewatcher({ host: '127.0.0.1', port: '12345' });
+	var client = remoteFilewatcher({ host: 'localhost', port: '12345' });
 
 	setTimeout(function () {
 		fs.writeFileSync(expectedFile, 'a');
