@@ -1,6 +1,6 @@
 {
   "name": "remote-filewatcher",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A networked drop-in replacement for filewatcher",
   "main": "lib/client.js",
   "bin": "lib/server.js",
