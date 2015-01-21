@@ -7,7 +7,7 @@ var expectedFile = __dirname + '/foo';
 var actualFile;
 var serverRanToEnd;
 
-var server = child_process.spawn('node', [__dirname + '/../lib/server.js', 'localhost', '12345'], { stdio: 'inherit' });
+var server = child_process.spawn('node', [__dirname + '/../lib/server.js', process.cwd(), '12345'], { stdio: 'inherit' });
 var serverExited = false;
 
 server.on('exit', function() {

@@ -22,6 +22,6 @@ watcher.on('change', function (file) {
 watcher.remove('anotherfile.txt');
 ```
 
-For the server just run `remote-filewatcher`
+For the server just run `remote-filewatcher .`
 
 License: MIT
