@@ -5,6 +5,7 @@ var assert = require('assert'),
 
 var expectedFile = __dirname + '/foo';
 var actualFile;
+var actualStat;
 var serverRanToEnd;
 
 var server = child_process.spawn('node', [__dirname + '/../lib/server.js', process.cwd(), '12345'], { stdio: 'inherit' });
@@ -25,8 +26,9 @@ setTimeout(function () {
 			fs.writeFileSync(expectedFile, 'b');
 		}, 1000);
 
-		client.on('change', function (file) {
+		client.on('change', function (file, stat) {
 			actualFile = file;
+			actualStat = stat;
 
 			client.removeAll();
 		});
@@ -42,5 +44,6 @@ process.on('exit', function() {
 	fs.unlinkSync(expectedFile);
 	assert.ok(serverRanToEnd);
 	assert.equal(actualFile, expectedFile);
+	assert.ok(actualStat);
 	console.log('Simple test OK');
 });

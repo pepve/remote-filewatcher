@@ -26,7 +26,7 @@
     "url": "https://github.com/pepve/remote-filewatcher/issues"
   },
   "dependencies": {
-    "filewatcher": "~1.1.1"
+    "filewatcher": "~2.0.3"
   },
   "devDependencies": {
     "jshint": "^2.5.5"
