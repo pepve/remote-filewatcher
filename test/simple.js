@@ -5,7 +5,9 @@ var assert = require('assert'),
 
 var expectedFile = __dirname + '/foo';
 var actualFile;
+var unexpectedFile = __dirname + '/bar';
 var actualStat;
+var changeCount = 0;
 var serverRanToEnd;
 
 var server = child_process.spawn('node', [__dirname + '/../lib/server.js', process.cwd(), '12345'], { stdio: 'inherit' });
@@ -20,13 +22,18 @@ setTimeout(function () {
 
 	setTimeout(function () {
 		fs.writeFileSync(expectedFile, 'a');
+		fs.writeFileSync(unexpectedFile, 'a');
 		client.add(expectedFile);
+		client.add(unexpectedFile);
+		client.remove(unexpectedFile);
 
 		setTimeout(function () {
 			fs.writeFileSync(expectedFile, 'b');
+			fs.writeFileSync(unexpectedFile, 'b');
 		}, 1000);
 
 		client.on('change', function (file, stat) {
+			changeCount++;
 			actualFile = file;
 			actualStat = stat;
 
@@ -42,6 +49,8 @@ setTimeout(function () {
 
 process.on('exit', function() {
 	fs.unlinkSync(expectedFile);
+	fs.unlinkSync(unexpectedFile);
+	assert.equal(1, changeCount);
 	assert.ok(serverRanToEnd);
 	assert.equal(actualFile, expectedFile);
 	assert.ok(actualStat);
