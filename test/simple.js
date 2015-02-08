@@ -1,7 +1,7 @@
 var assert = require('assert'),
 	fs = require('fs'),
 	child_process = require('child_process'),
-	remoteFilewatcher = require('..');
+	remoteFilewatcher = require('../lib/client');
 
 var expectedFile = __dirname + '/foo';
 var actualFile;

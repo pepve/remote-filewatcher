@@ -2,8 +2,8 @@
   "name": "remote-filewatcher",
   "version": "0.0.4",
   "description": "A networked drop-in replacement for filewatcher",
-  "main": "lib/client.js",
   "bin": "lib/server.js",
+  "main": "lib/index.js",
   "scripts": {
     "pretest": "jshint lib",
     "test": "node test/simple.js"
