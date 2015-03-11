@@ -18,7 +18,7 @@ server.on('exit', function() {
 });
 
 setTimeout(function () {
-	var client = remoteFilewatcher({ host: 'localhost', port: '12345' });
+	var client = remoteFilewatcher({ host: 'localhost', port: '12345', persistent: false });
 
 	setTimeout(function () {
 		fs.writeFileSync(expectedFile, 'a');
