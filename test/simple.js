@@ -1,7 +1,7 @@
 var assert = require('assert'),
 	fs = require('fs'),
 	child_process = require('child_process'),
-	remoteFilewatcher = require('..');
+	remoteFilewatcher = require('../lib/client');
 
 var expectedFile = __dirname + '/foo';
 var actualFile;
@@ -10,7 +10,7 @@ var actualStat;
 var changeCount = 0;
 var serverRanToEnd;
 
-var server = child_process.spawn('node', [__dirname + '/../lib/server.js', process.cwd(), '12345'], { stdio: 'inherit' });
+var server = child_process.spawn('node', [__dirname + '/../bin/remote-filewatcher', process.cwd(), '12345'], { stdio: 'inherit' });
 var serverExited = false;
 
 server.on('exit', function() {
